@@ -57,7 +57,7 @@ class Http:
         # type: (object, object) -> object
         """Get metadata by url"""
 
-        __is_server_online(host)
+        self.__is_server_online(host)
         self.__disable_verbose()
         self.__parse_params(params)
         scheme, host = urlparse(host).scheme, urlparse(host).netloc
