@@ -1,0 +1,11 @@
+# .coveragerc to control coverage.py
+[run]
+source = /Libraries
+concurrency = multiprocessing
+data_file= Reports/.coverage
+
+[paths]
+source = /Libraries
+
+[report]
+include = /Libraries

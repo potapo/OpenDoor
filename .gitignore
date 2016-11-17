@@ -1,0 +1,6 @@
+.idea
+*.pyc
+*~
+*.swp
+Logs/
+opendoor.egg-info/
