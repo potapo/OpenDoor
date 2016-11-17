@@ -1,5 +1,4 @@
 import collections
-import exceptions
 import httplib
 import logging
 import multiprocessing
@@ -8,6 +7,7 @@ import sys
 import time
 from urlparse import urlparse
 
+import exceptions
 from Logger import Logger as log
 
 try:
@@ -79,7 +79,7 @@ class Http:
             elif scheme == "https":
                 self.http = urllib3.HTTPSConnectionPool(host.split(':')[0], port=443 if len(host.split(':')) == 1 else int(host.split(':')[1]), block=True, maxsize=10)
             else :
-                log.critical("not support http scheme, Exit")
+                log.critical("not support http protocl, Exit now ")
                 sys.exit(1);
             pool = threadpool.ThreadPool(self.threads)
             requests = threadpool.makeRequests(self.request, self.urls)
