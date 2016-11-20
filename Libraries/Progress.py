@@ -19,12 +19,13 @@ class Progress:
     @staticmethod
     def line(message, countall, status, iterator):
         """Progress line"""
-
+        func_call = {'error': log.error,
+                     'success': log.success,
+                     'warning': log.warning}
         iterator += 1
         iterator = int(iterator)
-        indicator = iterator * 100 / countall;
-        getattr(log, '{}'.format(status))('{}% {}'.format(str(indicator), message), showtime = True, showlevel = False)
-        sys.stdout.flush()
+        indicator = iterator * 100 / countall
+        log.info('{}% {}'.format(str(indicator), message), showtime=True)
         return iterator
 
     @staticmethod

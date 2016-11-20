@@ -16,23 +16,22 @@ class Controller:
 
         :type InputArguments: Dict[str, str]
         """
-		func_call = {'url': self.url_action,
-                     "update": self.update_action,
-		             'version': self.version_action}
+		func_call = {'url': self.url_action, 'update': self.update_action, 'version': self.version_action}
 		for action, args in InputArguments.iteritems():
-			try:
-				# dynamic function call
-				if not args:
-					func_call[action]()
-				# getattr(self, '{func}_action'.format(func=action))()
-				else:
-					func_call[action](args, InputArguments)
-				#    # getattr(self, '{func}_action'.format(func=action))(args, InputArguments)
-				#    self.url_action(args,InputArguments)
-				#    break
+			# TODO  add debug
+			# try:
+			# dynamic function call
+			if not args:
+				func_call[action]()
+			# getattr(self, '{func}_action'.format(func=action))()
+			else:
+				func_call[action](args, InputArguments)
+			# # getattr(self, '{func}_action'.format(func=action))(args, InputArguments)
+			#    self.url_action(args,InputArguments)
+			#    break
 
-			except AttributeError:
-				log.critical(action + """ action does not exist in Controller""")
+			# except AttributeError:
+			# log.critical(action + """ action does not exist in Controller""")
 
 	@staticmethod
 	def update_action():
@@ -51,7 +50,7 @@ class Controller:
 	def url_action(self, url, params=()):
 		""" Load by url action """
 
-		result = Http().get(url, params);
+		result = Http().get(url, params)
 		if result:
 			Progress.view(result)
 			is_logging = params.get('log', self.DEFAULT_LOGGING)

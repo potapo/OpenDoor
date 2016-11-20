@@ -23,7 +23,7 @@ class Command:
             parser.add_argument('-p', '--proxy', default=False, action='store_true', help="Use proxy list")
             parser.add_argument('-l', '--log', default=False, action='store_true', help="Use filesystem log")
             parser.parse_args()
-            self.parser = parser;
+            self.parser = parser
         except (ArgumentParserError) as e:
             log.critical(e.message)
 
